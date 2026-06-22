@@ -4,19 +4,29 @@
       "id": 5,
       "description": "wood",
       "image": "./images/wood.jpg",
-      "location": "Greenpoint"
+      "location": "Greenpoint",
+      "price": "10.00"
     },
     {
       "id": 6,
       "description": "Beautiful couch",
       "image": "./images/couch.jpg",
-      "location": "Bay Ridge"
+      "location": "Bay Ridge",
+      "price": "25.00"
     },
     {
       "id": 7,
       "description": "Treadmill Parts For Free",
       "image": "./images/treadmill.jpg",
-      "location": "East Flatbush"
+      "location": "East Flatbush",
+      "price": "Free"
+    },
+    {
+      "description": "new item",
+      "location": "bumfu",
+      "price": "5.00",
+      "image": "http://localhost:3000/images/couch.jpg",
+      "id": 1782145338387
     }
   ]
 }

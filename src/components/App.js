@@ -13,6 +13,18 @@ function App() {
       .then((listings) => setListing(listings));
   }, []);
 
+  function handleAddListing(newListing) {
+    setListing([...isListing, newListing]);
+
+    fetch("http://localhost:6001/listings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newListing),
+    })
+      .then((res) => res.json())
+      .then((savedListing) => setListing([...isListing, savedListing]));
+  }
+
   const displayedSearch = isListing.filter((listing) => {
     const searchResult = listing.description || listing.location || "";
     return searchResult.toLowerCase().includes(search.toLowerCase());
@@ -35,7 +47,11 @@ function App() {
 
   return (
     <div className="app">
-      <Header search={search} onSearchChange={setSearch} />
+      <Header
+        search={search}
+        onSearchChange={setSearch}
+        onAddListing={handleAddListing}
+      />
       <ListingsContainer
         listings={displayedSearch}
         onDeleteListing={handleDeleteListing}
