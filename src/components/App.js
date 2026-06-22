@@ -6,12 +6,21 @@ import ListingCard from "./ListingCard";
 function App() {
   const [isListing, setListing] = useState([]);
   const [search, setSearch] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:6001/listings")
-      .then((res) => res.json())
-      .then((listings) => setListing(listings));
+      .then((res) => {
+        if (!res.ok) throw new Error("Loading listings failed!");
+        return res.json();
+      })
+      .then((listings) => setListing(listings))
+      .catch((err) => setError(err));
   }, []);
+
+  if (error) {
+    throw error;
+  }
 
   function handleAddListing(newListing) {
     setListing([...isListing, newListing]);
@@ -21,8 +30,12 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newListing),
     })
-      .then((res) => res.json())
-      .then((savedListing) => setListing([...isListing, savedListing]));
+      .then((res) => {
+        if (!res.ok) throw new Error("Adding listing failed!");
+        return res.json();
+      })
+      .then((savedListing) => setListing([...isListing, savedListing]))
+      .catch((err) => setError(err));
   }
 
   const displayedSearch = isListing.filter((listing) => {

@@ -20,13 +20,6 @@
       "image": "./images/treadmill.jpg",
       "location": "East Flatbush",
       "price": "Free"
-    },
-    {
-      "description": "new item",
-      "location": "bumfu",
-      "price": "5.00",
-      "image": "http://localhost:3000/images/couch.jpg",
-      "id": 1782145338387
     }
   ]
 }
