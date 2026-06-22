@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 
 function ListingCard({ listing, onDeleteListing }) {
-
   const [isFavorited, setIsFavorited] = useState(false);
 
   const { image, price, description, location, id } = listing;

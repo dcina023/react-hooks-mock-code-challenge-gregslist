@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   const displayedSearch = isListing.filter((listing) => {
-    const searchResult = listing.description || "";
+    const searchResult = listing.description || listing.location || "";
     return searchResult.toLowerCase().includes(search.toLowerCase());
   });
 
